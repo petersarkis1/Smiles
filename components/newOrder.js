@@ -39,12 +39,11 @@ class New_Order extends Component {
   };
 
     displayAlert(msg) {
-      let password = '';
       Alert.alert(
     '',
     msg,
     [
-      {text: 'OK', onPress: () => this.setState({password})},
+      {text: 'OK', onPress: () => ''},
     ],
     { cancelable: false }
   )
