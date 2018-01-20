@@ -90,6 +90,7 @@ class New_Order extends Component {
                 let shelterEmail = shelter_res.data[shortestDistancePos].email;
                 let shelterLat = shelter_res.data[shortestDistancePos].lat;
                 let shelterLng = shelter_res.data[shortestDistancePos].lng;
+                console.log('shelterNameHere',shelterName);
                 axios.post('https://ps-capstone-server.herokuapp.com/orders', {
                   meals: this.state.meals,
                   businessName: this.props.user.businessName,

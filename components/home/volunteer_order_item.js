@@ -31,7 +31,15 @@ class Volunteer_Order_Item extends Component {
   render() {
     const color = this.props.user.maxDistance < this.props.totalDistance ? 'red' : 'gray';
       return (
-        <TouchableOpacity onPress={() => this.displayAlert('item')}>
+        <TouchableOpacity onPress={() => this.displayAlert(
+          `Order Information:\n
+  From: ${this.props.order.businessName}
+  To: ${this.props.order.shelterName}
+  Number of Meals: ${this.props.order.meals}
+  Pick up by: ${this.props.order.pickupDeadline}
+  Total Distance: ${this.props.totalDistance}
+  description: ${this.props.order.description}`
+        )}>
         <View style={styles.container}>
 
         <View style={styles.items}>
