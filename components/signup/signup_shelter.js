@@ -161,7 +161,7 @@ class SignUp_Shelter extends Component {
 
           <Button
             title="Create Account"
-            color="#ff5c5c"
+            color="#3A867B"
             onPress={this.createNewShelter}/>
 
         </View>

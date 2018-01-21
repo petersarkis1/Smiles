@@ -161,7 +161,7 @@ class SignUp_Vendor extends Component {
 
           <Button
             title="Create Account"
-            color="#ff5c5c"
+            color="#3A867B"
             onPress={this.createNewVendor}/>
 
         </View>

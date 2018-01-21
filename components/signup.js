@@ -22,21 +22,24 @@ class SignUp extends Component {
           <View style={styles.title}>
             <Text style={styles.text}> Sign up as a ____ </Text>
           </View>
-          <TouchableOpacity
-            onPress={() => this.props.setPage('signup_vendor')}
-            style={styles.vender}>
-            <Text style={styles.text}> Food Vendor </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this.props.setPage('signup_volunteer')}
-            style={styles.volunteer}>
-            <Text style={styles.text}> Volunteer </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this.props.setPage('signup_shelter')}
-            style={styles.shelter}>
-            <Text style={styles.text}> Homeless shelter </Text>
-          </TouchableOpacity>
+          <View style={styles.items}>
+          <Button
+            title = 'Food Vendor'
+            color="#3A867B"
+            onPress={() => this.props.setPage('signup_vendor')}/>
+          </View>
+          <View style={styles.items}>
+          <Button
+            title = 'Volunteer'
+            color="#3A867B"
+            onPress={() => this.props.setPage('signup_volunteer')}/>
+          </View>
+          <View style={styles.items}>
+          <Button
+            title = 'Shelter'
+            color="#3A867B"
+            onPress={() => this.props.setPage('signup_shelter')}/>
+          </View>
         </View>
       );
     } else {
@@ -50,36 +53,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'stretch',
+    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   title: {
-    height: '13%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F1FAEE',
+    margin: 10,
   },
-  vender: {
-    height: '29%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#A8DADC',
-  },
-  volunteer: {
-    height: '29%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#457B9D',
-  },
-  shelter: {
-    height: '29%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1D3557',
+  items: {
+    margin: 8,
+    width: 200
   },
   text : {
-    fontSize: 40,
-    color: '#545556'
+    fontSize: 24,
   },
 });
 

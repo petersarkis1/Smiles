@@ -145,6 +145,7 @@ export default class App extends Component {
           orders={this.state.orders}
           user={this.state.user}
           setUser={setUser}
+          setOrders={setOrders}
           setPage={setPage} />
 
         <New_Order

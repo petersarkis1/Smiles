@@ -28,7 +28,7 @@ class Home_Shelter extends Component {
   }
 
   _refresh() {
-    axios.get(`https://ps-capstone-server.herokuapp.com/orders/${this.props.user.email}`)
+    axios.get(`https://ps-capstone-server.herokuapp.com/orders/shelters/${this.props.user.email}`)
     .then(res => {
       this.props.setOrders(res.data);
     })
@@ -80,6 +80,9 @@ class Home_Shelter extends Component {
             <View style={styles.titleItems}>
               <Text>Status:</Text>
             </View>
+            <View style={styles.titleItems}>
+              <Text>Delivered:</Text>
+            </View>
           </View>
           <View style={styles.container}>
             {this.orders}
@@ -129,7 +132,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   titleItems: {
-    width: '40%',
+    width: '33%',
     justifyContent: 'center',
     alignItems: 'center',
   }

@@ -29,6 +29,7 @@ class Shelter_Order_Item extends Component {
   }
 
   render() {
+    const color = this.props.order.status === 'Delivered' ? '#3A867B' : 'gray';
     return (
       <TouchableOpacity onPress={() => this.displayAlert(
         `Order Information:\n
@@ -44,6 +45,12 @@ description: ${this.props.order.description}`
         </View>
         <View style={styles.items}>
           <Text>{this.props.order.status}</Text>
+        </View>
+        <View style={styles.items}>
+          <Button
+            title="Confirm"
+            color={color}
+            onPress={() => this.props.setPage('newOrder')} />
         </View>
 
       </View>
@@ -63,7 +70,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   items: {
-    width: '40%',
+    width: '33%',
     justifyContent: 'center',
     alignItems: 'center',
   }

@@ -24,7 +24,7 @@ class Home_Vendor extends Component {
   }
 
   _refresh() {
-    axios.get(`https://ps-capstone-server.herokuapp.com/orders/${this.props.user.email}`)
+    axios.get(`https://ps-capstone-server.herokuapp.com/orders/foodvendors/${this.props.user.email}`)
     .then(res => {
       this.props.setOrders(res.data);
     })

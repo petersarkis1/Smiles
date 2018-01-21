@@ -130,7 +130,7 @@ class SignUp_Volunteer extends Component {
 
           <View style={{width: 200}}>
             <Text>
-              Max distance willing to drive:
+              Max distance (miles):
             </Text>
             <TextInput
               value={this.state.maxDistance}
@@ -139,7 +139,7 @@ class SignUp_Volunteer extends Component {
 
           <Button
             title="Create Account"
-            color="#ff5c5c"
+            color="#3A867B"
             onPress={this.createNewVolunteer}/>
 
         </View>

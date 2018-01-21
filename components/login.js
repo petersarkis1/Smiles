@@ -97,13 +97,18 @@ class Login extends Component {
             onChangeText={(password) => this.setState({password})} />
         </View>
         <View style={styles.buttonContainer}>
-        <Button
-          title="Login"
-          onPress={this.attemptLogin} />
-        <Button
-          title="Create Account"
-          color="#ff5c5c"
-          onPress={() => this.props.setPage('signup')} />
+          <View style={{margin: 4}}>
+            <Button
+              title="Login"
+              color="#3A867B"
+              onPress={this.attemptLogin} />
+          </View>
+          <View style={{margin: 4}}>
+            <Button
+              title="Create Account"
+              color="#3A867B"
+              onPress={() => this.props.setPage('signup')} />
+          </View>
         </View>
       </View>
     );
@@ -125,7 +130,7 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    marginBottom: 20,
   },
   instructions: {
     textAlign: 'center',
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    margin: 20
+    margin: 20,
   },
 });
 
