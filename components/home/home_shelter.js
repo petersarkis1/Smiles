@@ -19,6 +19,7 @@ class Home_Shelter extends Component {
   constructor(props) {
     super(props);
     this._refresh = this._refresh.bind(this);
+    this._signOut = this._signOut.bind(this);
     this.state = {
       toggle: true
     }
@@ -39,6 +40,11 @@ class Home_Shelter extends Component {
       });
     }
 
+  _signOut() {
+    this.props.setPage('login');
+    this.props.setUser('');
+  }
+
   render() {
     if (this.props.currentPage === 'shelters') {
       if(this.orders.length !== this.props.orders.length) {
@@ -47,16 +53,26 @@ class Home_Shelter extends Component {
       return (
         <PTRView onRefresh={this._refresh} >
         <View style={styles.container}>
-          <View style={styles.title}>
-          <Text>Accepting Donations </Text>
+        <View style={styles.navBar}>
+          <Text style={{margin: 10, color: 'white', fontWeight: 'bold', fontSize: 20}}>Welcome {this.props.user.firstName + ' ' + this.props.user.lastName}</Text>
+          <View style={{margin: 10}}>
+            <Button
+            title="sign out"
+            color="#3A867B"
+            onPress={() => this._signOut()} />
+          </View>
+        </View>
+          <View style={styles.radio}>
+          <Text style={{margin: 6, color: 'white', fontWeight: 'bold', fontSize: 20}}>Accepting Donations </Text>
           <RadioButton
             animation={'bounceIn'}
-            innerColor={"#3A867B"}
-            outerColor={"#3A867B"}
+            innerColor={"white"}
+            outerColor={"white"}
             isSelected={this.state.toggle}
             onPress={() => this.setState({toggle: !this.state.toggle})}
           />
           </View>
+          <Text style={styles.orderTitle}>Scheduled Order(s):</Text>
           <View style={styles.title}>
             <View style={styles.titleItems}>
               <Text>Meals:</Text>
@@ -83,12 +99,34 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
+  navBar: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#474747',
+  },
   title: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     marginTop: 6
+  },
+  orderTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    margin: 10,
+    color: 'black'
+  },
+  radio: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#3A867B',
+    margin: 5,
+    borderRadius: 2,
   },
   titleItems: {
     width: '40%',

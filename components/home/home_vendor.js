@@ -18,6 +18,7 @@ class Home_Vendor extends Component {
   constructor(props) {
     super(props);
     this._refresh = this._refresh.bind(this);
+    this._signOut = this._signOut.bind(this);
     this.orders = [];
     this._refresh();
   }
@@ -35,6 +36,11 @@ class Home_Vendor extends Component {
       });
     }
 
+  _signOut() {
+    this.props.setPage('login');
+    this.props.setUser('');
+  }
+
   render() {
     if (this.props.currentPage === 'foodvendors') {
       if(this.orders.length !== this.props.orders.length) {
@@ -43,12 +49,22 @@ class Home_Vendor extends Component {
       return (
         <PTRView onRefresh={this._refresh} >
         <View style={styles.container}>
-          <View>
+        <View style={styles.navBar}>
+          <Text style={{margin: 10, color: 'white', fontWeight: 'bold', fontSize: 20}}>Welcome {this.props.user.firstName + ' ' + this.props.user.lastName}</Text>
+          <View style={{margin: 10}}>
+            <Button
+            title="sign out"
+            color="#3A867B"
+            onPress={() => this._signOut()} />
+          </View>
+        </View>
+          <View style={{margin: 5}}>
           <Button
             title="Add new Meals"
             color="#3A867B"
             onPress={() => this.props.setPage('newOrder')} />
           </View>
+          <Text style={styles.orderTitle}>Your Order(s):</Text>
           <View style={styles.title}>
             <View style={styles.titleItems}>
               <Text>Meals:</Text>
@@ -81,12 +97,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
+  navBar: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#474747',
+  },
   title: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     marginTop: 6
+  },
+  orderTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    margin: 10,
+    color: 'black'
   },
   titleItems: {
     width: '25%',

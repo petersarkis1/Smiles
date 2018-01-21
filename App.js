@@ -119,6 +119,7 @@ export default class App extends Component {
           currentPage={this.state.currentPage}
           orders={this.state.orders}
           user={this.state.user}
+          setUser={setUser}
           setOrders={setOrders}
           setPage={setPage}
           removeOrder={removeOrder} />
@@ -127,6 +128,7 @@ export default class App extends Component {
           currentPage={this.state.currentPage}
           orders={this.state.orders}
           user={this.state.user}
+          setUser={setUser}
           setOrders={setOrders}
           setPage={setPage} />
 
@@ -134,6 +136,7 @@ export default class App extends Component {
           currentPage={this.state.currentPage}
           orders={this.state.orders}
           user={this.state.user}
+          setUser={setUser}
           setPage={setPage} />
 
         <New_Order

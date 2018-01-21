@@ -18,6 +18,7 @@ class Home_Volunteer extends Component {
   constructor(props) {
     super(props);
     this._refresh = this._refresh.bind(this);
+    this._signOut = this._signOut.bind(this);
     this.orders = [];
     this._refresh();
   }
@@ -65,6 +66,11 @@ class Home_Volunteer extends Component {
     });
   }
 
+  _signOut() {
+    this.props.setPage('login');
+    this.props.setUser('');
+  }
+
   render() {
     if (this.props.currentPage === 'volunteers') {
       if(this.orders.length !== this.props.orders.length) {
@@ -85,7 +91,7 @@ class Home_Volunteer extends Component {
               <Text>Distance:</Text>
             </View>
             <View style={styles.titleItems}>
-              <Text>Accept</Text>
+              <Text>Advance</Text>
             </View>
           </View>
         );
@@ -96,8 +102,14 @@ class Home_Volunteer extends Component {
       return (
         <PTRView onRefresh={this._refresh} >
         <View style={styles.container}>
-        <View style={{backgroundColor: "#3A867B"}}>
-          <Text>Welcome {this.props.user.firstName + ' ' + this.props.user.lastName}</Text>
+        <View style={styles.navBar}>
+          <Text style={{margin: 10, color: 'white', fontWeight: 'bold', fontSize: 20}}>Welcome {this.props.user.firstName + ' ' + this.props.user.lastName}</Text>
+          <View style={{margin: 10}}>
+            <Button
+            title="sign out"
+            color="#3A867B"
+            onPress={() => this._signOut()} />
+          </View>
         </View>
         <Text style={styles.orderTitle}>Current Order:</Text>
         {curOrderComp}
@@ -134,6 +146,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
+  },
+  navBar: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#474747',
   },
   orderTitle: {
     fontWeight: 'bold',

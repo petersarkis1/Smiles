@@ -58,6 +58,10 @@ class Login extends Component {
             delete res.data.currentPage;
             this.props.setUser(res.data);
             this.props.setPage(page);
+            this.setState({
+              email: '',
+              password: '',
+            });
           }
         })
         .catch(err => {

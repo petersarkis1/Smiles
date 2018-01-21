@@ -16,8 +16,27 @@ class Shelter_Order_Item extends Component {
   constructor(props) {
     super(props);
   }
+
+  displayAlert(msg) {
+    Alert.alert(
+  '',
+  msg,
+  [
+    {text: 'OK', onPress: () => ''},
+  ],
+  { cancelable: false }
+  )
+  }
+
   render() {
     return (
+      <TouchableOpacity onPress={() => this.displayAlert(
+        `Order Information:\n
+From: ${this.props.order.businessName}
+Number of Meals: ${this.props.order.meals}
+Status: ${this.props.order.status}
+description: ${this.props.order.description}`
+      )}>
       <View style={styles.container}>
 
         <View style={styles.items}>
@@ -28,6 +47,7 @@ class Shelter_Order_Item extends Component {
         </View>
 
       </View>
+      </TouchableOpacity>
     );
   }
 }
