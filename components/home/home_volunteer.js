@@ -43,7 +43,6 @@ class Home_Volunteer extends Component {
             toVendor = parseFloat( toVendor.substring(0,toVendor.length - 3) );
           }
           const totalDistance = toVendor + parseFloat(order.vendorToShelter);
-          console.log('aaaaa',totalDistance);
           return ({
             distance: totalDistance,
             comp: <Volunteer_Order_Item key={order.id} order={order} curCoord={this.curCoord} user={this.props.user} totalDistance={totalDistance} />
@@ -54,7 +53,6 @@ class Home_Volunteer extends Component {
         });
       });
       Promise.all(promises).then((results) => {
-        console.log('seeeeee',results);
         results.sort((a, b) => {
           return a.distance - b.distance;
         });
@@ -62,6 +60,7 @@ class Home_Volunteer extends Component {
           return order.comp;
         });
         this.orders = results;
+        this.currentOrder = null;
       });
     });
   }
@@ -71,10 +70,10 @@ class Home_Volunteer extends Component {
       if(this.orders.length !== this.props.orders.length) {
         this._refresh();
       }
-      return (
-        <PTRView onRefresh={this._refresh} >
-        <View style={styles.container}>
 
+      let curOrderComp;
+      if (this.currentOrder) {
+        curOrderComp = (
           <View style={styles.title}>
             <View style={styles.titleItems}>
               <Text>Meals:</Text>
@@ -89,7 +88,32 @@ class Home_Volunteer extends Component {
               <Text>Accept</Text>
             </View>
           </View>
+        );
+      } else {
+        curOrderComp = <Text style={{marginLeft: 10}}>No ongoing order</Text>;
+      }
 
+      return (
+        <PTRView onRefresh={this._refresh} >
+        <View style={styles.container}>
+
+        <Text style={styles.orderTitle}>Current Order:</Text>
+        {curOrderComp}
+        <Text style={styles.orderTitle}>Available Order(s):</Text>
+          <View style={styles.title}>
+            <View style={styles.titleItems}>
+              <Text>Meals:</Text>
+            </View>
+            <View style={styles.titleItems}>
+              <Text>Pickup By:</Text>
+            </View>
+            <View style={styles.titleItems}>
+              <Text>Distance:</Text>
+            </View>
+            <View style={styles.titleItems}>
+              <Text>Accept</Text>
+            </View>
+          </View>
           <View style={styles.container}>
             {this.orders}
           </View>
@@ -108,6 +132,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
+  },
+  orderTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    margin: 10,
+    color: 'black'
   },
   title: {
     flex: 1,

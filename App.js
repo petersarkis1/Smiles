@@ -90,7 +90,7 @@ export default class App extends Component {
     const setPage = (page => {this.setCurrentPage(page)});
     const removeOrder = (id => {this.removeOrder(id)});
     return (
-      <View style={{flex:1}}>
+      <View style={{flex:1, backgroundColor: '#F5FCFF'}}>
         <Login
           currentPage={this.state.currentPage}
           setPage={setPage}
