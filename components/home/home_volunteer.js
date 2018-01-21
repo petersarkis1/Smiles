@@ -96,7 +96,9 @@ class Home_Volunteer extends Component {
       return (
         <PTRView onRefresh={this._refresh} >
         <View style={styles.container}>
-
+        <View style={{backgroundColor: "#3A867B"}}>
+          <Text>Welcome {this.props.user.firstName + ' ' + this.props.user.lastName}</Text>
+        </View>
         <Text style={styles.orderTitle}>Current Order:</Text>
         {curOrderComp}
         <Text style={styles.orderTitle}>Available Order(s):</Text>

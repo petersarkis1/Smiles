@@ -37,7 +37,7 @@ class Volunteer_Order_Item extends Component {
   To: ${this.props.order.shelterName}
   Number of Meals: ${this.props.order.meals}
   Pick up by: ${this.props.order.pickupDeadline}
-  Total Distance: ${this.props.totalDistance}
+  Total Distance: ${this.props.totalDistance} mi
   description: ${this.props.order.description}`
         )}>
         <View style={styles.container}>
