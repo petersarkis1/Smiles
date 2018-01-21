@@ -52,13 +52,21 @@ export default class App extends Component {
         _this.setState({currentPage: _this.pastPages.pop()});
         return true;
       }
-      return false;
+      if (_this.state.currentPage === 'login') {
+        return false;
+      }
+      return true;
     });
   }
 
-  setCurrentPage(currentPage) {
-    this.pastPages.push(this.state.currentPage);
-    this.setState({currentPage});
+  setCurrentPage(nextPage) {
+    const rootPages = ['foodvendors','volunteers','shelters','login'];
+    if (rootPages.indexOf(nextPage) !== -1) {
+      this.pastPages = [];
+    } else {
+      this.pastPages.push(this.state.currentPage);
+    }
+    this.setState({currentPage: nextPage});
   }
 
   removeOrder(id) {
