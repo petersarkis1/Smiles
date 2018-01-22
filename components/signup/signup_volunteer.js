@@ -78,7 +78,7 @@ class SignUp_Volunteer extends Component {
   }
 
   render() {
-    if(this.props.currentPage === 'signup_volunteer') {
+    if (this.props.currentPage === 'signup_volunteer') {
       return (
         <View style={styles.container}>
 

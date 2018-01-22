@@ -19,8 +19,17 @@ class Home_Vendor extends Component {
     super(props);
     this._refresh = this._refresh.bind(this);
     this._signOut = this._signOut.bind(this);
+    this._deleteOrder = this._deleteOrder.bind(this);
     this.orders = [];
+    this.load = false;
     this._refresh();
+  }
+
+  _deleteOrder(id) {
+    this.props.removeOrder(id);
+    setTimeout(() => {
+      this._refresh();
+    }, 50);
   }
 
   _refresh() {
@@ -31,8 +40,9 @@ class Home_Vendor extends Component {
     .catch(err => {
       console.log(err);
     });
+    const removeOrder = (id => {this._deleteOrder(id)});
     this.orders = this.props.orders.map((order)=>{
-        return <Vendor_Order_Item key={order.id} order={order} removeOrder={this.props.removeOrder}/>;
+        return <Vendor_Order_Item key={order.id} order={order} removeOrder={removeOrder}/>;
       });
     }
 
@@ -46,6 +56,11 @@ class Home_Vendor extends Component {
       if(this.orders.length !== this.props.orders.length) {
         this._refresh();
       }
+      if(!this.load) {
+        this._refresh();
+        this.load = true;
+      }
+
       return (
         <PTRView onRefresh={this._refresh} >
         <View style={styles.container}>
@@ -86,6 +101,7 @@ class Home_Vendor extends Component {
         </PTRView>
       );
     } else {
+      this.load = false;
       return null;
     }
   }

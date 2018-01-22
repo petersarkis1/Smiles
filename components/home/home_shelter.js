@@ -24,6 +24,7 @@ class Home_Shelter extends Component {
       toggle: true
     }
     this.orders = [];
+    this.load = false;
     this._refresh();
   }
 
@@ -50,6 +51,11 @@ class Home_Shelter extends Component {
       if(this.orders.length !== this.props.orders.length) {
         this._refresh();
       }
+      if(!this.load) {
+        this._refresh();
+        this.load = true;
+      }
+
       return (
         <PTRView onRefresh={this._refresh} >
         <View style={styles.container}>
@@ -91,6 +97,7 @@ class Home_Shelter extends Component {
         </PTRView>
       );
     } else {
+      this.load = false;
       return null;
     }
   }

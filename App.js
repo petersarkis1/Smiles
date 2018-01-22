@@ -86,13 +86,13 @@ export default class App extends Component {
   }
 
   render() {
-    console.log('time: ',new Date().toDateString());
-    console.log('Current Page: ',this.state.currentPage);
-    console.log('Past Pages: ',this.pastPages);
-    console.log('state',this.state);
-    navigator.geolocation.getCurrentPosition(pos => {
-      console.log(pos);
-    });
+    // console.log('time: ',new Date().toDateString());
+    // console.log('Current Page: ',this.state.currentPage);
+    // console.log('Past Pages: ',this.pastPages);
+    // console.log('state',this.state);
+    // navigator.geolocation.getCurrentPosition(pos => {
+    //   console.log(pos);
+    // });
     const setUser = (user => {this.setState({user})});
     const setOrders = (orders => {this.setState({orders})});
     const setPage = (page => {this.setCurrentPage(page)});

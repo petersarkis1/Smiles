@@ -55,9 +55,9 @@ class Volunteer_Order_Item extends Component {
         </View>
         <View style={styles.items}>
         <Button
-        title="✓"
+        title=" ✓ "
         color="#3A867B"
-        onPress={() => this.displayAlert('what should i be doing again?')} />
+        onPress={() => this.props.setCO(this.props.index)} />
         </View>
 
         </View>
