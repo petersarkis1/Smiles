@@ -15,6 +15,7 @@ import axios from 'axios';
 class Shelter_Order_Item extends Component {
   constructor(props) {
     super(props);
+    this._canDelete = this._canDelete.bind(this);
   }
 
   displayAlert(msg) {
@@ -28,8 +29,32 @@ class Shelter_Order_Item extends Component {
   )
   }
 
+  _canDelete() {
+    if (this.props.order.status === 'Complete') {
+      Alert.alert(
+      '',
+      "Confirm volunteer's delivery",
+      [
+        {text: 'Conifrm', onPress: () => {
+          this.props.removeOrder(this.props.order.id);
+        }},
+      ],
+      { cancelable: false }
+      );
+    } else {
+      Alert.alert(
+      '',
+      "Can not confirm at this time please wait for volunteer's delivery",
+      [
+        {text: 'OK', onPress: () => ''},
+      ],
+      { cancelable: false }
+      );
+    }
+  }
+
   render() {
-    const color = this.props.order.status === 'Delivered' ? '#3A867B' : 'gray';
+    const color = this.props.order.status === 'Complete' ? '#3A867B' : 'gray';
     return (
       <TouchableOpacity onPress={() => this.displayAlert(
         `Order Information:\n
@@ -50,7 +75,7 @@ description: ${this.props.order.description}`
           <Button
             title="Confirm"
             color={color}
-            onPress={() => this.props.setPage('newOrder')} />
+            onPress={() => this._canDelete()} />
         </View>
 
       </View>

@@ -20,7 +20,9 @@ class Home_Volunteer extends Component {
     super(props);
     this._refresh = this._refresh.bind(this);
     this._signOut = this._signOut.bind(this);
+    this._progress = this._progress.bind(this);
     this._setCurrentOrder = this._setCurrentOrder.bind(this);
+    this._updateStatus = this._updateStatus.bind(this);
     this.displayAlert = this.displayAlert.bind(this);
     this.state = {
       orderComponents: [],
@@ -30,7 +32,8 @@ class Home_Volunteer extends Component {
     this.load = false;
     _this = this;
     setInterval(function(){
-      console.log('hiiya');
+      console.log(_this.state.currentOrder);
+      console.log(typeof (_this.state.currentOrder));
       if(_this.state.currentOrder) {
         navigator.geolocation.getCurrentPosition(pos => {
           const curCoord = pos.coords.latitude + ',' + pos.coords.longitude;
@@ -48,7 +51,7 @@ class Home_Volunteer extends Component {
   }
 
   _setCurrentOrder(index) {
-    if(this.state.currentOrder === null) {
+    if(!this.state.currentOrder) {
       let tempOrderComponents = this.state.orderComponents;
       tempOrderComponents.splice(index,1);
       let tempOrders = this.props.orders;
@@ -81,10 +84,84 @@ class Home_Volunteer extends Component {
   }
 
   _progress() {
-    
+    if(this.state.currentOrder.status === 'Complete') {
+      Alert.alert(
+        '',
+        `Please wait for Shelter Confirmation`,
+        [
+          {text: 'OK', onPress: () => this._refresh()},
+        ],
+        { cancelable: false }
+      )
+    }
+    if(this.state.currentOrder.status === 'Delivery') {
+      Alert.alert(
+        '',
+        `Order delivered to ${this.state.currentOrder.shelterName}?`,
+        [
+          {text: 'Cancel', onPress: () => ''},
+          {text: 'Confirm', onPress: () => {
+            let temp = this.state.currentOrder;
+            temp.status = 'Complete';
+            this.setState({currentOrder: temp});
+            this._updateStatus('Complete');
+          }},
+        ],
+        { cancelable: false }
+      )
+    }
+    if(this.state.currentOrder.status === 'Pickup') {
+      Alert.alert(
+        '',
+        `Order picked up from ${this.state.currentOrder.businessName}?`,
+        [
+          {text: 'Cancel', onPress: () => ''},
+          {text: 'Confirm', onPress: () => {
+            let temp = this.state.currentOrder;
+            temp.status = 'Delivery';
+            this.setState({currentOrder: temp});
+            this._updateStatus('Delivery');
+          }},
+        ],
+        { cancelable: false }
+      )
+    }
+  }
+
+  _updateStatus(newStatus) {
+    axios.patch(`https://ps-capstone-server.herokuapp.com/orders/status/${this.state.currentOrder.id}`,{
+      status: newStatus,
+    })
+    .then(() => {
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   _refresh() {
+    axios.get(`https://ps-capstone-server.herokuapp.com/orders/volunteers/${this.props.user.email}`)
+    .then(res => {
+        this.setState({currentOrder: res.data});
+        if(res.data) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          const curCoord = pos.coords.latitude + ',' + pos.coords.longitude;
+          let destinationCoords = this.state.currentOrder.vendorLat + ',' + this.state.currentOrder.vendorLng;
+          axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${curCoord}&destinations=${destinationCoords}&mode=driving&units=imperial&language=en&key=AIzaSyBbA2R_64ojDk8R5juL5kpfYE5ITJR0zpI`)
+          .then(res => {
+            this.setState({distanceTo: res.data.rows[0].elements[0].distance.text});
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+
     axios.get('https://ps-capstone-server.herokuapp.com/orders/open')
     .then(res => {
       this.props.setOrders(res.data);
@@ -180,7 +257,7 @@ class Home_Volunteer extends Component {
               <Text>Status:</Text>
             </View>
             <View style={styles.titleItems}>
-              <Text>Complete</Text>
+              <Text>Advance:</Text>
             </View>
           </View>
           <TouchableOpacity onPress={() => this.displayAlert(
@@ -206,7 +283,7 @@ class Home_Volunteer extends Component {
           <Button
           title="=>"
           color="#3A867B"
-          onPress={() => console.log('aaaa')} />
+          onPress={() => this._progress()} />
           </View>
           </View>
           </TouchableOpacity>

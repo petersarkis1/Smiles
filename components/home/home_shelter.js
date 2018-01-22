@@ -20,12 +20,20 @@ class Home_Shelter extends Component {
     super(props);
     this._refresh = this._refresh.bind(this);
     this._signOut = this._signOut.bind(this);
+    this._deleteOrder = this._deleteOrder.bind(this);
     this.state = {
       toggle: true
     }
     this.orders = [];
     this.load = false;
     this._refresh();
+  }
+
+  _deleteOrder(id) {
+    this.props.removeOrder(id);
+    setTimeout(() => {
+      this._refresh();
+    }, 50);
   }
 
   _refresh() {
@@ -36,8 +44,9 @@ class Home_Shelter extends Component {
     .catch(err => {
       console.log(err);
     });
+    const removeOrder = (id => {this._deleteOrder(id)});
     this.orders = this.props.orders.map((order)=>{
-        return <Shelter_Order_Item key={order.id} order={order} />;
+        return <Shelter_Order_Item key={order.id} order={order} removeOrder={removeOrder}/>;
       });
     }
 
@@ -45,6 +54,7 @@ class Home_Shelter extends Component {
     this.props.setPage('login');
     this.props.setUser('');
   }
+
 
   render() {
     if (this.props.currentPage === 'shelters') {

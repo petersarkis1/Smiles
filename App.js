@@ -86,13 +86,6 @@ export default class App extends Component {
   }
 
   render() {
-    // console.log('time: ',new Date().toDateString());
-    // console.log('Current Page: ',this.state.currentPage);
-    // console.log('Past Pages: ',this.pastPages);
-    // console.log('state',this.state);
-    // navigator.geolocation.getCurrentPosition(pos => {
-    //   console.log(pos);
-    // });
     const setUser = (user => {this.setState({user})});
     const setOrders = (orders => {this.setState({orders})});
     const setPage = (page => {this.setCurrentPage(page)});
@@ -146,7 +139,8 @@ export default class App extends Component {
           user={this.state.user}
           setUser={setUser}
           setOrders={setOrders}
-          setPage={setPage} />
+          setPage={setPage}
+          removeOrder={removeOrder} />
 
         <New_Order
           currentPage={this.state.currentPage}
