@@ -27,7 +27,7 @@ class Home_Volunteer extends Component {
     this.state = {
       orderComponents: [],
       currentOrder: null,
-      distanceTo: null,
+      distanceTo: '',
     };
     this.load = false;
     _this = this;
@@ -181,7 +181,7 @@ class Home_Volunteer extends Component {
           } else {
             toVendor = parseFloat( toVendor.substring(0,toVendor.length - 3) );
           }
-          const totalDistance = toVendor + parseFloat(order.vendorToShelter);
+          const totalDistance = '' + (toVendor + parseFloat(order.vendorToShelter));
           const setCO = (index => {this._setCurrentOrder(index)});
           return ({
             distance: totalDistance,
@@ -266,7 +266,7 @@ class Home_Volunteer extends Component {
     To: ${this.state.currentOrder.shelterName}
     Number of Meals: ${this.state.currentOrder.meals}
     Pick up by: ${this.state.currentOrder.pickupDeadline}
-    Distance to Next Stop: ${this.state.distanceTo}
+    Distance to Next Stop: ${this.state.distanceTo.substring(0,5)}
     description: ${this.state.currentOrder.description}`
           )}>
           <View style={styles.innerContainer}>
@@ -274,7 +274,7 @@ class Home_Volunteer extends Component {
           <Text>{this.state.currentOrder.pickupDeadline}</Text>
           </View>
           <View style={styles.items}>
-          <Text>{this.state.distanceTo}</Text>
+          <Text>{this.state.distanceTo.substring(0,5)}</Text>
           </View>
           <View style={styles.items}>
           <Text>{this.state.currentOrder.status}</Text>
