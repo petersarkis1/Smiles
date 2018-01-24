@@ -20,4 +20,6 @@ Technologies:
 
 This was my very first independent full stack application in addition to my first React and React Native app.
 
-Communication between user was a challenge because there was no direct link, instead all the users talked to the database to gather information on the others.
+Communication between users was a challenge because there was no direct link. Instead all the users talked to the database to gather information on the others. My solution was adding a refresh option that could allow for retrieval of updated information. An alternative solution would be to use a socket connect like firebase to have data relayed to the user without the need of continuous api calls.
+
+ 
