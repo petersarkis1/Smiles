@@ -20,4 +20,4 @@ Technologies:
 
 This was my very first independent full stack application in addition to my first React and React Native app.
 
-Communication between user was a challenge because there was no direct link, instead all the user talked to the database to gather information on the others.
+Communication between user was a challenge because there was no direct link, instead all the users talked to the database to gather information on the others.
