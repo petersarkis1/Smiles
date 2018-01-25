@@ -266,7 +266,7 @@ class Home_Volunteer extends Component {
     To: ${this.state.currentOrder.shelterName}
     Number of Meals: ${this.state.currentOrder.meals}
     Pick up by: ${this.state.currentOrder.pickupDeadline}
-    Distance to Next Stop: ${this.state.distanceTo.substring(0,5)}
+    Distance to Next Stop: ${this.state.distanceTo.substring(0,4)}
     description: ${this.state.currentOrder.description}`
           )}>
           <View style={styles.innerContainer}>
@@ -274,7 +274,7 @@ class Home_Volunteer extends Component {
           <Text>{this.state.currentOrder.pickupDeadline}</Text>
           </View>
           <View style={styles.items}>
-          <Text>{this.state.distanceTo.substring(0,5)}</Text>
+          <Text>{this.state.distanceTo.substring(0,4)}</Text>
           </View>
           <View style={styles.items}>
           <Text>{this.state.currentOrder.status}</Text>
