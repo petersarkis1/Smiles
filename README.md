@@ -24,18 +24,14 @@ Technologies:
 
 ### Demo Explanation:
 * First a food vendor will sign into their account and create a new order.
-![Smiles Title](./readmeMedia/neworder.png)
 * The food vendor's home page will list all of their orders which can be clicked on for more detail.
-![Smiles Title](./readmeMedia/foodvendor.png)
 * Next a volunteer will sign in, taking them to their home page, where a list of all available orders are displayed.
-![Smiles Title](./readmeMedia/volunteer.png)
 * The volunteer will view the order the food vendor just created and accept it as their current order.
 * The volunteer can then click on their current order to see details about the current segment as well as get a route built with google maps.
 * Once the volunteer has arrived and picked up the meals they can advance the order to the next segment.
 * The current order details will now be updated to take the volunteer to the point of destination.
 Once they arrive to the shelter they can advance the order again.
 * Finally the shelter can log in and confirm their donation has arrived.
-![Smiles Title](./readmeMedia/shelter.png)
 
 <hr>
 
