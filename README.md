@@ -16,25 +16,6 @@ Technologies:
 
 <hr>
 
-## App Demo
-
-[![Demo Video](http://img.youtube.com/vi/OZHWWTwwr5o/0.jpg)](http://www.youtube.com/watch?v=OZHWWTwwr5o)
-
-<hr>
-
-### Demo Explanation:
-* First a food vendor will sign into their account and create a new order.
-* The food vendor's home page will list all of their orders which can be clicked on for more detail.
-* Next a volunteer will sign in, taking them to their home page, where a list of all available orders are displayed.
-* The volunteer will view the order the food vendor just created and accept it as their current order.
-* The volunteer can then click on their current order to see details about the current segment as well as get a route built with google maps.
-* Once the volunteer has arrived and picked up the meals they can advance the order to the next segment.
-* The current order details will now be updated to take the volunteer to the point of destination.
-Once they arrive to the shelter they can advance the order again.
-* Finally the shelter can log in and confirm their donation has arrived.
-
-<hr>
-
 ### Challenges:
 
 * This was my very first independent full stack application in addition to my first React and React Native app.
@@ -44,6 +25,51 @@ Once they arrive to the shelter they can advance the order again.
 * This was my first time using the Google Maps API distance Matrix, and geocoding.
 
 * Building page navigation without the use of a router, and incorporating the ability to keep track previously visited pages in order to allow for the back functionality.
+
+<hr>
+
+### Scenario
+
+Cam own a local restaurants, towards the end of the day she realize will around 10 extra meals that she cannot keep. Using Smiles Cam will post her order. Peter in the area, will see Cam's order and help transport to Louie who runs a near by shelter.
+
+<hr>
+
+### Walkthrough:
+Cam signs into her account.
+
+![Smiles Title](./readmeMedia/signin.png)
+
+Once signed in she sees her dashboard
+
+![Smiles Title](./readmeMedia/vendorHome.png)
+
+The Cam's dashboard will list all of their orders which can be clicked on for more detail. She will click on add new meals fills out the forum.
+
+![Smiles Title](./readmeMedia/newOrder.png)
+
+Next Peter will sign in, taking him to his home page, where a list of all available orders are displayed.
+
+![Smiles Title](./readmeMedia/volunteerHome.png)
+
+Peter will view the order the food vendor just created and accept it as their current order.
+
+![Smiles Title](./readmeMedia/currentOrder.png)
+
+Peter can then click on his current order to see details about the current segment as well as get a route built with google maps.
+
+![Smiles Title](./readmeMedia/openMaps.png)
+
+Once Peter has arrived and picked up the meals he can advance the order to the next segment. The current order details will now be updated to take Peter to the point of destination. Once he arrives to the shelter he can advance the order again.
+
+Finally Louie can log in and confirm their donation has arrived.
+
+![Smiles Title](./readmeMedia/shelter.png)
+
+<hr>
+
+### App Demo
+
+[![Demo Video](http://img.youtube.com/vi/OZHWWTwwr5o/0.jpg)](http://www.youtube.com/watch?v=OZHWWTwwr5o)
 
 <hr>
 
