@@ -34,12 +34,18 @@ Cam own a local restaurants, towards the end of the day she realize will around 
 
 <hr>
 
+### Summary
+
+* Cam signs into her account.
+
+<hr>
+
 ### Walkthrough:
 Cam signs into her account.
 
 ![Smiles Title](./readmeMedia/signin.png)
 
-Once signed in she sees her dashboard
+Once signed in she sees her dashboard.
 
 ![Smiles Title](./readmeMedia/vendorHome.png)
 
